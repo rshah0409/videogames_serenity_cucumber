@@ -20,18 +20,20 @@ public class VideoGameSteps {
         videoGamePojo.setRating( rating );
         return SerenityRest.rest()
                 .given().log().all()
-                .header( "Content-Type","application/json" )
                 .contentType( ContentType.JSON )
-                .body( videoGamePojo ).accept( "application/json" )
                 .when()
-                .post(EndPoints.CREATE_NEW_VIDEOGAME).then().log().all();
+                .body( videoGamePojo ).accept( "application/json" )
+                .post(EndPoints.CREATE_NEW_VIDEOGAME)
+                .then().log().all();
+
 
     }
     @Step("getting info with sinlge id")
-    public ValidatableResponse getSingleVideoGameByid(int id){
+    public ValidatableResponse getSingleVideoGameByid(int videogameId){
         return SerenityRest.rest()
                 .given().log().all()
-                .pathParam( "id", id)
+                .pathParam( "id", videogameId)
+                .header("Accept","application/json")
                 .when()
                 .get(EndPoints.GET_VIDEOGAME_BY_ID)
                 .then();
@@ -52,7 +54,7 @@ public class VideoGameSteps {
         return SerenityRest.rest()
                 .given().log().all()
                 .header( "Content-Type","application/json" )
-                .pathParam( "id",id ).log().all()
+                .pathParam( "id",id )
                 .when()
                 .body( videoGamePojo ).accept( "application/json" )
                 .put( EndPoints.UPDATE_VIDEOGAME_BY_ID )

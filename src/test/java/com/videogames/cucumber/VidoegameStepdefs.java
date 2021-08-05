@@ -1,4 +1,4 @@
-package com.videogames.steps;
+package com.videogames.cucumber;
 
 import com.videogames.utils.TestUtils;
 import com.videogames.videogameinfo.VideoGameSteps;
@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class VidoegameStepdefs {
     static int id = 1 + TestUtils.getRandomValueInt();
     static String name = "Suoer Mario";
-    static String releaseDate = "2019-09-20T08:55:58.510Z";
+    static String releaseDate = ("2019-09-20T08:55:58.510Z");
     static int reviewScore = 80;
     static String category = "Kids";
     static String rating  = "Universal";
@@ -22,7 +22,7 @@ public class VidoegameStepdefs {
     VideoGameSteps videoGameSteps;
 
     @When("^I create a new videogame by providing the information name \"([^\"]*)\" releaseDate \"([^\"]*)\" rating \"([^\"]*)\"$")
-    public void iCreateANewVideogameByProvidingTheInformationNameReleaseDateRating(String arg0, String arg1, String arg2)  {
+    public void iCreateANewVideogameByProvidingTheInformationNameReleaseDateRating(String name, String releaseDate, String rating)  {
         videoGameSteps.createVideoGame(id,name,releaseDate,reviewScore,category,rating).log().all().statusCode(200).extract().response().body()
                 .jsonPath();
     }
@@ -61,10 +61,10 @@ public class VidoegameStepdefs {
 
     @When("^I delete a created videogame ,I should get back a valid status code  (\\d+)$")
     public void iDeleteACreatedVideogameIShouldGetBackAValidStatusCode(int videogameId) {
-        videoGameSteps.deleteGameById(id).log().all().statusCode(200);
+        videoGameSteps.deleteGameById(videogameId).log().all().statusCode(200);
     }
 
-    @When("^User sends a GET requets to videogames endpoint, user should get back a valid status code (\\d+)$")
+    @When("^User sends a GET requets to videogames endpoint, user should get back a valid status code 200$")
     public void userSendsAGETRequetsToVideogamesEndpointUserShouldGetBackAValidStatusCode() {
         videoGameSteps.getAllVideoGames().log().all().statusCode(200);
     }

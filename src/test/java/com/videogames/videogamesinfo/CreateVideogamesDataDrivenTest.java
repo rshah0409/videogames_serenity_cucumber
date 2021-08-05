@@ -24,14 +24,7 @@ public class CreateVideogamesDataDrivenTest extends TestBase {
     @Steps
     VideoGameSteps videoGameSteps;
 
-//    @Title( "Get all video games " )
-//    @Test
-//    public void getAllVideoGames(){
-//
-//     videoGameSteps.getAllVideoGames().statusCode( 200 );
-//
-//
-//    }
+
     @Title( "Data Driven Test for adding multiple videogames to the application" )
     @Test
     public void createMultipleVideogames(){
@@ -39,20 +32,8 @@ public class CreateVideogamesDataDrivenTest extends TestBase {
 
 
     }
-@Title( "Get video game by id and verify" )
-    @Test
-    public void getVideoGameByIdAndVerify(){
-        id = 54;
-        videoGameSteps.getSingleVideoGameByid( id );
 
 
-
-}
-@Test
-    public void iUpdateAVideoGameWithIdByInformationNameCategory()  {
-        id = 54;
-        videoGameSteps.updatesingleVideoGameById( id,name,releaseDate,reviewScore,category,rating );
-    }
 
 
 

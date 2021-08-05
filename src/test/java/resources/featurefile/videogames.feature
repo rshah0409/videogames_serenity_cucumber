@@ -6,7 +6,7 @@ Feature:  Testing different request on the video games application
 
     Examples:
       | name        | releaseDate              | rating    |
-      | Head Hunter | 2021-06-31T19:08:27.609Z | Universal |
+      | Head Hunter | 2021-07-31T19:08:27.609Z | Universal |
 
   Scenario: Getting videogame information by Id
     When I send GET request to videogames endpoint with Id "id",I should received the videogame information
